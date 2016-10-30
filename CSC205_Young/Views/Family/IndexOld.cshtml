@@ -1,0 +1,23 @@
+﻿@model CSC205_Young.ViewModels.FamilyViewModel
+
+@{
+    ViewBag.Title = "View";
+}
+
+<h2>View</h2>
+
+<div>
+    <h4>Family</h4>
+    <hr />
+    <p>
+        @foreach (var Family in Model.Families)
+        {
+            
+            <div>@Family.familyname @Family.city - @Family.homephone</div>
+                
+            }
+    </p>
+  
+</div>
+
+

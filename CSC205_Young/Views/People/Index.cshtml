@@ -1,4 +1,4 @@
-﻿@model IEnumerable<CSC205_Young.Models.Family>
+﻿@model IEnumerable<CSC205_Young.Models.Person>
 
 @{
     ViewBag.Title = "Index";
@@ -12,22 +12,22 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.familyname)
+            @Html.DisplayNameFor(model => model.firstname)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.address1)
+            @Html.DisplayNameFor(model => model.middlename)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.city)
+            @Html.DisplayNameFor(model => model.lastname)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.state)
+            @Html.DisplayNameFor(model => model.cell)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.zip)
+            @Html.DisplayNameFor(model => model.relationship)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.homephone)
+            @Html.DisplayNameFor(model => model.familyId)
         </th>
         <th></th>
     </tr>
@@ -35,22 +35,22 @@
 @foreach (var item in Model) {
     <tr>
         <td>
-            @Html.DisplayFor(modelItem => item.familyname)
+            @Html.DisplayFor(modelItem => item.firstname)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.address1)
+            @Html.DisplayFor(modelItem => item.middlename)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.city)
+            @Html.DisplayFor(modelItem => item.lastname)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.state)
+            @Html.DisplayFor(modelItem => item.cell)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.zip)
+            @Html.DisplayFor(modelItem => item.relationship)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.homephone)
+            @Html.DisplayFor(modelItem => item.familyId)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

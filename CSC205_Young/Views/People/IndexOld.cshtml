@@ -1,0 +1,12 @@
+﻿@model CSC205_Young.ViewModels.PersonViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var person in Model.peoplelist)
+            {
+    <div>@person.firstname @person.lastname - @person.cell</div> @Html.ActionLink("Details","Details/" + @person.id)
+}
