@@ -48,7 +48,7 @@ namespace CSC205_Young.Controllers
         // GET: Family/Details/5
         public ActionResult Details(int id)
         {
-            var fList = (List<Person>)Session["familyList"];
+            var fList = (List<Family>)Session["familyList"];
             var f = fList[id];
             return View(f);
         }
@@ -93,7 +93,7 @@ namespace CSC205_Young.Controllers
         // GET: Family/Edit/5
         public ActionResult Edit(int id)
         {
-            var fList = (List<Person>)Session["familyList"];
+            var fList = (List<Family>)Session["familyList"];
             var f = fList[id];
             return View(f);
         }
@@ -139,7 +139,7 @@ namespace CSC205_Young.Controllers
         // GET: Family/Delete/5
         public ActionResult Delete(int id)
         {
-            var fList = (List<Person>)Session["familyList"];
+            var fList = (List<Family>)Session["familyList"];
             var f = fList[id];
             return View(f);
         }
