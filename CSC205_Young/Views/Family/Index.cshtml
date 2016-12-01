@@ -9,50 +9,50 @@
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
+<table>
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.familyname)
+        <th class="th1">
+            Family Name
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.address1)
+        <th class="th1">
+            Address 1
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.city)
+        <th class="th1">
+            City
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.state)
+        <th class="th1">
+            State
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.zip)
+        <th class="th1">
+            Zip
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.homephone)
+        <th class="th1">
+            Phone
         </th>
-        <th></th>
+        <th class="th1"></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td class="td1">
             @Html.DisplayFor(modelItem => item.familyname)
         </td>
-        <td>
+        <td class="td1">
             @Html.DisplayFor(modelItem => item.address1)
         </td>
-        <td>
+        <td class="td1">
             @Html.DisplayFor(modelItem => item.city)
         </td>
-        <td>
+        <td class="td1">
             @Html.DisplayFor(modelItem => item.state)
         </td>
-        <td>
+        <td class="td1">
             @Html.DisplayFor(modelItem => item.zip)
         </td>
-        <td>
+        <td class="td1">
             @Html.DisplayFor(modelItem => item.homephone)
         </td>
-        <td>
+        <td class="td1">
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |
             @Html.ActionLink("Details", "Details", new { id=item.id }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.id })

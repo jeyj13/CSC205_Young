@@ -172,6 +172,16 @@ namespace CSC205_Young.Controllers
                 var p = pList[id];
 
                 Session["peopleList"] = pList.Where(x => x.id != id).ToList();
+                
+
+                pList = (List<Person>)Session["peopleList"];
+
+                for (int x = id; x < pList.Count(); x++)
+                {
+
+                    if (pList[x] != null)
+                        pList[x].id = x;
+                }
                 return RedirectToAction("Index");
             }
             catch

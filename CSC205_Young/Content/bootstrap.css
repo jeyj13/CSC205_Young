@@ -6813,4 +6813,23 @@ td.visible-print {
   td.hidden-print {
     display: none !important;
   }
+  @media (max-width: 700px) {
+
+        th, td{
+        padding: 3px 1px 3px 1px;
+
+    }
+
+}
+
+@media (max-width: 550px) {
+}
+@media (max-width: 450px) {
+    .1th, .td1{
+        padding: 3px 1px 3px 1px;
+
+    }
+    
+}
+
 }

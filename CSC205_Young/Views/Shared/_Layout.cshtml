@@ -4,8 +4,9 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
+    
     @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/css")
 
 </head>
 <body>
@@ -27,7 +28,21 @@
                     <li>@Html.ActionLink("Family","Index", "Family")</li>
                     <li>@Html.ActionLink("People", "Index", "People")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
+                @if (Request.IsAuthenticated)
+                {
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="#">@User.Identity.Name</a></li>
+                        <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                    </ul>
+                }
+                else
+                {
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                        <li>@Html.ActionLink("Log in", "Login", "Login")</li>
+                    </ul>
+                }
             </div>
         </div>
     </div>

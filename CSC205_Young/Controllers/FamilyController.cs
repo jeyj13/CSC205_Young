@@ -156,6 +156,14 @@ namespace CSC205_Young.Controllers
                 var f = fList[id];
 
                 Session["familyList"] = fList.Where(x => x.id != id).ToList();
+                fList = (List<Family>)Session["familyList"];
+
+                for(int x=id;x<fList.Count();x++)
+                {
+                    
+                    if (fList[x] != null)
+                        fList[x].id = x;
+                }
                 return RedirectToAction("Index");
             }
             catch
