@@ -59,22 +59,29 @@ textarea {
         
 
     }
+
+    
+        
+}
         body {
     padding-top: 50px;
-    background-color: #eff5ff;
+    background-color: #a0c4ff;
     color: #000000;
     padding-bottom: 20px;
 }
 
 a{
-    color: red
+    color: darkgreen
+}
+a:hover{
+    color: lawngreen
 }
 a:visited{
-    color: darkred
+    color: darkblue
 }
     nav, .navbar, .navbar-nav, .navbar-collapse, .collapse, .nav-list-item a {
-        background-color: #0b2d63;
-        color: #0b2d63;
+        background-color: #042356;
+        color: #042356;
     }
     ul{
     background-color: #0050d1;
@@ -93,6 +100,4 @@ a:visited{
 .navbar-inverse .navbar-brand > a:hover{
     color: white;
 }
-    
-        
-}
+
