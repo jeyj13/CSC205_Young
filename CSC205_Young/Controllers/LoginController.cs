@@ -76,5 +76,13 @@ namespace CSC205_Young.Controllers
                 return View();
             }
         }
+        // GET: Logout
+        public ActionResult Logout()
+        {
+
+            FormsAuthentication.SignOut();
+            return RedirectToAction("Index", "Home");
+
+        }
     }
 }
