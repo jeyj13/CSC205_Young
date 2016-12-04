@@ -34,8 +34,8 @@ namespace CSC205_Young.Controllers
         public ActionResult Login()
         {
            
-           FormsAuthentication.SetAuthCookie("user", false);
-            return View();
+           FormsAuthentication.SetAuthCookie("TestUser", false);
+            return RedirectToAction("Index", "Home");
             
         }
 
