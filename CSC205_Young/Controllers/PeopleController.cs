@@ -41,8 +41,15 @@ namespace CSC205_Young.Controllers
     // GET: People
     public ActionResult Index()
         {
-            var p = (List<Person>)Session["peopleList"];
-            return View(p);
+            if (Request.IsAuthenticated)
+            {
+                var p = (List<Person>)Session["peopleList"];
+                return View(p);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // GET: People/Details/5
@@ -50,47 +57,67 @@ namespace CSC205_Young.Controllers
         {
             // var People = new PersonViewModel();
             // People.peoplelist = p;
-            
-            var pList = (List<Person>)Session["peopleList"];
-            var p = pList[id];
+            if (Request.IsAuthenticated)
+            {
+                var pList = (List<Person>)Session["peopleList"];
+                var p = pList[id];
 
-            
-            return View(p);
+
+                return View(p);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // GET: People/Create
         public ActionResult Create()
         {
-            return View();
+            if (Request.IsAuthenticated)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // POST: People/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
-            try
+            if (Request.IsAuthenticated)
             {
-                people = (List<Person>)Session["peopleList"];
-                Person newPerson = new Person()
+                try
                 {
-                    id = people.Count(),
-                    firstname = collection["firstname"],
-                    middlename = collection["middlename"],
-                    lastname = collection["lastname"],
-                    cell = collection["cell"],
-                    relationship = collection["relationship"],
-                    familyId = int.Parse(collection["familyId"]
-                    )
-                };
-                people = (List<Person>)Session["peopleList"];
-                people.Add(newPerson);
-                Session["peopleList"] = people;
+                    people = (List<Person>)Session["peopleList"];
+                    Person newPerson = new Person()
+                    {
+                        id = people.Count(),
+                        firstname = collection["firstname"],
+                        middlename = collection["middlename"],
+                        lastname = collection["lastname"],
+                        cell = collection["cell"],
+                        relationship = collection["relationship"],
+                        familyId = int.Parse(collection["familyId"]
+                        )
+                    };
+                    people = (List<Person>)Session["peopleList"];
+                    people.Add(newPerson);
+                    Session["peopleList"] = people;
 
-                return RedirectToAction("Index");
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View();
+                }
             }
-            catch
+            else
             {
-                return View();
+                return RedirectToAction("Index", "Home");
             }
         }
     
@@ -98,95 +125,124 @@ namespace CSC205_Young.Controllers
         // GET: People/Edit/5
         public ActionResult Edit(int id)
         {
-            var pList = (List<Person>)Session["peopleList"];
+            if (Request.IsAuthenticated)
+            {
+                var pList = (List<Person>)Session["peopleList"];
 
-            
-            var p = pList[id];
 
-            
-            return View(p);
+                var p = pList[id];
+
+
+                return View(p);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // POST: People/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            try
+            if (Request.IsAuthenticated)
             {
-                // TODO: Add delete logic here
-                var pList = (List<Person>)Session["peopleList"];
-
-
-                var p = pList[id];
-
-                Person newPerson = new Person()
+                try
                 {
-                    id = id,
-                    firstname = collection["firstname"],
-                    middlename = collection["middlename"],
-                    lastname = collection["lastname"],
-                    cell = collection["cell"],
-                    relationship = collection["relationship"],
-                    familyId = int.Parse(collection["familyId"]
-                   )
-                };
-                pList.Where(x => x.id == id).First().firstname = collection["firstname"];
-                pList.Where(x => x.id == id).First().middlename = collection["middlename"];
-                pList.Where(x => x.id == id).First().lastname = collection["lastname"];
-                pList.Where(x => x.id == id).First().cell = collection["cell"];
-                pList.Where(x => x.id == id).First().relationship = collection["relationship"];
-                pList.Where(x => x.id == id).First().familyId = int.Parse(collection["familyId"]);
-                //Session["peopleList"] = pList.Where(x => x.id != id).ToList();
-                return RedirectToAction("Index");
+                    // TODO: Add delete logic here
+                    var pList = (List<Person>)Session["peopleList"];
+
+
+                    var p = pList[id];
+
+                    Person newPerson = new Person()
+                    {
+                        id = id,
+                        firstname = collection["firstname"],
+                        middlename = collection["middlename"],
+                        lastname = collection["lastname"],
+                        cell = collection["cell"],
+                        relationship = collection["relationship"],
+                        familyId = int.Parse(collection["familyId"]
+                       )
+                    };
+                    pList.Where(x => x.id == id).First().firstname = collection["firstname"];
+                    pList.Where(x => x.id == id).First().middlename = collection["middlename"];
+                    pList.Where(x => x.id == id).First().lastname = collection["lastname"];
+                    pList.Where(x => x.id == id).First().cell = collection["cell"];
+                    pList.Where(x => x.id == id).First().relationship = collection["relationship"];
+                    pList.Where(x => x.id == id).First().familyId = int.Parse(collection["familyId"]);
+                    //Session["peopleList"] = pList.Where(x => x.id != id).ToList();
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View();
+                }
             }
-            catch
+            else
             {
-                return View();
+                return RedirectToAction("Index", "Home");
             }
+
         }
 
         // GET: People/Delete/5
         public ActionResult Delete(int id)
         {
+            if (Request.IsAuthenticated)
+            {
 
-            //After first delete, it may throw out of range exception
-            var pList = (List<Person>)Session["peopleList"];
+                //After first delete, it may throw out of range exception
+                var pList = (List<Person>)Session["peopleList"];
 
-            
-            var p = pList[id];
 
-            
-            return View(p);
+                var p = pList[id];
+
+
+                return View(p);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // POST: People/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
+            if (Request.IsAuthenticated)
             {
-                // TODO: Add delete logic here
-                var pList = (List<Person>)Session["peopleList"];
-
-
-                var p = pList[id];
-
-                Session["peopleList"] = pList.Where(x => x.id != id).ToList();
-                
-
-                pList = (List<Person>)Session["peopleList"];
-
-                for (int x = id; x < pList.Count(); x++)
+                try
                 {
+                    // TODO: Add delete logic here
+                    var pList = (List<Person>)Session["peopleList"];
 
-                    if (pList[x] != null)
-                        pList[x].id = x;
+
+                    var p = pList[id];
+
+                    Session["peopleList"] = pList.Where(x => x.id != id).ToList();
+
+
+                    pList = (List<Person>)Session["peopleList"];
+
+                    for (int x = id; x < pList.Count(); x++)
+                    {
+
+                        if (pList[x] != null)
+                            pList[x].id = x;
+                    }
+                    return RedirectToAction("Index");
                 }
-                return RedirectToAction("Index");
+                catch
+                {
+                    return View();
+                }
             }
-            catch
+            else
             {
-                return View();
+                return RedirectToAction("Index", "Home");
             }
         }
     }

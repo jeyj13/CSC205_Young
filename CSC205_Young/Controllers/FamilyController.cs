@@ -41,134 +41,189 @@ namespace CSC205_Young.Controllers
 
             // families.Families = f;
             //families = f;
-            var f = (List<Family>)Session["familyList"];
-            return View(f);
+            if (Request.IsAuthenticated)
+            {
+                var f = (List<Family>)Session["familyList"];
+                return View(f);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // GET: Family/Details/5
         public ActionResult Details(int id)
         {
-            var fList = (List<Family>)Session["familyList"];
-            var f = fList[id];
-            return View(f);
+            if (Request.IsAuthenticated)
+            {
+                var fList = (List<Family>)Session["familyList"];
+                var f = fList[id];
+                return View(f);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // GET: Family/Create
         public ActionResult Create()
         {
-            return View();
+            if (Request.IsAuthenticated)
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // POST: Family/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection) {
 
-
-            try
+            if (Request.IsAuthenticated)
             {
-                families = (List<Family>)Session["familyList"];
-                Family newFamily = new Family()
+                try
                 {
-                    id = families.Count(),
-                    familyname = collection["familyname"],
-                    address1 = collection["middlename"],
-                    city = collection["lastname"],
-                    state = collection["cell"],
-                    zip = collection["relationship"],
-                    homephone = collection["homephone"]
+                    families = (List<Family>)Session["familyList"];
+                    Family newFamily = new Family()
+                    {
+                        id = families.Count(),
+                        familyname = collection["familyname"],
+                        address1 = collection["middlename"],
+                        city = collection["lastname"],
+                        state = collection["cell"],
+                        zip = collection["relationship"],
+                        homephone = collection["homephone"]
 
-                };
-        
+                    };
+
                     families = (List<Family>)Session["familyList"];
                     families.Add(newFamily);
                     Session["familyList"] = families;
                     return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View();
+                }
             }
-            catch
+            else
             {
-                return View();
+                return RedirectToAction("Index", "Home");
             }
         }
 
         // GET: Family/Edit/5
         public ActionResult Edit(int id)
         {
-            var fList = (List<Family>)Session["familyList"];
-            var f = fList[id];
-            return View(f);
+            if (Request.IsAuthenticated)
+            {
+                var fList = (List<Family>)Session["familyList"];
+                var f = fList[id];
+                return View(f);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // POST: Family/Edit/5
         [HttpPost]
         public ActionResult Edit(int id, FormCollection collection)
         {
-            try
+            if (Request.IsAuthenticated)
             {
-                // TODO: Add update logic here
-                var fList = (List<Family>)Session["familyList"];
-
-
-                var f = fList[id];
-
-                Family newFamily = new Family()
+                try
                 {
-                    id = id,
-                    familyname = collection["familyname"],
-                    address1 = collection["address1"],
-                    city = collection["city"],
-                    state = collection["state"],
-                    zip = collection["zip"],
-                    homephone = collection["homephone"]
-                   
-                };
-                fList.Where(x => x.id == id).First().familyname = collection["familyname"];
-                fList.Where(x => x.id == id).First().address1 = collection["address1"];
-                fList.Where(x => x.id == id).First().city = collection["city"];
-                fList.Where(x => x.id == id).First().state = collection["state"];
-                fList.Where(x => x.id == id).First().zip = collection["zip"];
-                fList.Where(x => x.id == id).First().homephone = collection["homephone"];
-                //Session["peopleList"] = pList.Where(x => x.id != id).ToList();
-                return RedirectToAction("Index");
+                    // TODO: Add update logic here
+                    var fList = (List<Family>)Session["familyList"];
+
+
+                    var f = fList[id];
+
+                    Family newFamily = new Family()
+                    {
+                        id = id,
+                        familyname = collection["familyname"],
+                        address1 = collection["address1"],
+                        city = collection["city"],
+                        state = collection["state"],
+                        zip = collection["zip"],
+                        homephone = collection["homephone"]
+
+                    };
+                    fList.Where(x => x.id == id).First().familyname = collection["familyname"];
+                    fList.Where(x => x.id == id).First().address1 = collection["address1"];
+                    fList.Where(x => x.id == id).First().city = collection["city"];
+                    fList.Where(x => x.id == id).First().state = collection["state"];
+                    fList.Where(x => x.id == id).First().zip = collection["zip"];
+                    fList.Where(x => x.id == id).First().homephone = collection["homephone"];
+                    //Session["peopleList"] = pList.Where(x => x.id != id).ToList();
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    return View();
+                }
             }
-            catch
+            else
             {
-                return View();
+                return RedirectToAction("Index", "Home");
             }
         }
 
         // GET: Family/Delete/5
         public ActionResult Delete(int id)
         {
-            var fList = (List<Family>)Session["familyList"];
-            var f = fList[id];
-            return View(f);
+            if (Request.IsAuthenticated)
+            {
+                var fList = (List<Family>)Session["familyList"];
+                var f = fList[id];
+                return View(f);
+            }
+            else
+            {
+                return RedirectToAction("Index", "Home");
+            }
         }
 
         // POST: Family/Delete/5
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
+            if (Request.IsAuthenticated)
             {
-                var fList = (List<Family>)Session["familyList"];
-
-
-                var f = fList[id];
-
-                Session["familyList"] = fList.Where(x => x.id != id).ToList();
-                fList = (List<Family>)Session["familyList"];
-
-                for(int x=id;x<fList.Count();x++)
+                try
                 {
-                    
-                    if (fList[x] != null)
-                        fList[x].id = x;
+                    var fList = (List<Family>)Session["familyList"];
+
+
+                    var f = fList[id];
+
+                    Session["familyList"] = fList.Where(x => x.id != id).ToList();
+                    fList = (List<Family>)Session["familyList"];
+
+                    for (int x = id; x < fList.Count(); x++)
+                    {
+
+                        if (fList[x] != null)
+                            fList[x].id = x;
+                    }
+                    return RedirectToAction("Index");
                 }
-                return RedirectToAction("Index");
+                catch
+                {
+                    return View();
+                }
             }
-            catch
+            else
             {
-                return View();
+                return RedirectToAction("Index", "Home");
             }
         }
     }
