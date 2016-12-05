@@ -80,3 +80,5 @@ C:\Users\Jey\Documents\Visual Studio 2015\Projects\CSC205_Young\CSC205_Young\bin
 C:\Users\Jey\Documents\Visual Studio 2015\Projects\CSC205_Young\CSC205_Young\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 C:\Users\Jey\Documents\Visual Studio 2015\Projects\CSC205_Young\CSC205_Young\obj\Debug\CSC205_Young.dll
 C:\Users\Jey\Documents\Visual Studio 2015\Projects\CSC205_Young\CSC205_Young\obj\Debug\CSC205_Young.pdb
+C:\Users\Jey\Documents\Visual Studio 2015\Projects\CSC205_Young\CSC205_Young\bin\WebMatrix.Data.dll
+C:\Users\Jey\Documents\Visual Studio 2015\Projects\CSC205_Young\CSC205_Young\bin\WebMatrix.Data.xml

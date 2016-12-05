@@ -76,7 +76,18 @@ namespace CSC205_Young.Controllers
                 if (isAuthenticated)
                 {
                     FormsAuthentication.SetAuthCookie(model.username, true);
-                 //   this.userService.EnableAdmin(model.Username);
+                    
+                  /*  if (!Roles.RoleExists("administrator"))
+                        Roles.CreateRole("administrator");
+
+                    if (userAuth.admin == true && Roles.IsUserInRole(userAuth.username, "administrator") != true)
+                    {
+                        Roles.AddUserToRole(userAuth.username, "administrator");
+                    }
+                    else
+                    {
+
+                    }*/
                     return RedirectToAction("Index", "Home");
                 }
                 else

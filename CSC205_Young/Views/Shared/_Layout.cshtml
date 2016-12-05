@@ -29,6 +29,11 @@
 {
                     <li>@Html.ActionLink("Family", "Index", "Family")</li>
                     <li>@Html.ActionLink("People", "Index", "People")</li>
+                    
+    @*if(Roles.IsUserInRole("administrator"))
+    {
+        <li>@Html.ActionLink("Nope", "Nope", "Home")</li>
+    }*@
 }
                 </ul>
                 @if (Request.IsAuthenticated)
