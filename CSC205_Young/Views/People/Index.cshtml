@@ -16,24 +16,8 @@
             First Name
         </th>
         <th>
-            @*@Html.DisplayNameFor(model => model.middlename)*@
-            Middle Name
-        </th>
-        <th>
             @*@Html.DisplayNameFor(model => model.lastname)*@
             Last Name
-        </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.cell)*@
-            Cellphone #
-        </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.relationship)*@
-            Relationship
-        </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.familyId)*@
-            Family ID
         </th>
         <th></th>
     </tr>
@@ -44,19 +28,7 @@
             @Html.DisplayFor(modelItem => item.firstname)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.middlename)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.lastname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.cell)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.relationship)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.familyId)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.id }) |

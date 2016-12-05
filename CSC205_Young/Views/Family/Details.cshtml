@@ -11,7 +11,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.familyname)
+            Family Name
         </dt>
 
         <dd>
@@ -19,7 +19,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.address1)
+            Address
         </dt>
 
         <dd>
@@ -27,7 +27,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.city)
+            City
         </dt>
 
         <dd>
@@ -35,7 +35,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.state)
+            State
         </dt>
 
         <dd>
@@ -43,7 +43,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.zip)
+            ZIP
         </dt>
 
         <dd>
@@ -51,13 +51,18 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.homephone)
+            Phone #
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.homephone)
         </dd>
-
+        <dt>
+            Family ID#
+        </dt>
+        <dd>
+            @Model.id
+        </dd>
     </dl>
 </div>
 <p>

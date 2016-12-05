@@ -12,7 +12,7 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.firstname)
+            First Name
         </dt>
 
         <dd>
@@ -20,7 +20,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.middlename)
+            Middle Name
         </dt>
 
         <dd>
@@ -28,7 +28,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.lastname)
+            Last Name
         </dt>
 
         <dd>
@@ -36,7 +36,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.cell)
+            Cellphone #
         </dt>
 
         <dd>
@@ -44,28 +44,30 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.relationship)
+            Relationship
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.relationship)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.familyId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.familyId)
-        </dd>
-
     </dl>
 
-    @using (Html.BeginForm()) {
+    <script type="text/javascript">
+        function SubmitForm() {
+            var r = confirm("Are you sure you want to delete this entry?")
+            if(r == false)
+            {
+                return false;
+            }
+        }
+    </script>
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
+            <input type="submit" value="Delete" class="btn btn-default" onclick="javascript: return SubmitForm()" /> |
             @Html.ActionLink("Back to List", "Index")
         </div>
     }

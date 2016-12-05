@@ -80,22 +80,22 @@ a:visited{
     color: darkblue
 }
     nav, .navbar, .navbar-nav, .navbar-collapse, .collapse, .nav-list-item a {
-        background-color: #042356;
-        color: #042356;
+        background-color: #006eff;
+        color: #006eff;
     }
     ul{
-    background-color: #0050d1;
-    color: #0050d1;
+    background-color: #5b69ff;
+    color: #5b69ff;
     
 }
     .navbar-inverse .navbar-nav > li > a {
-    color: #2662c1;
+    color: #f4fc00;
 }
 .navbar-inverse .navbar-nav > li > a:hover {
     color: white;
 }
 .navbar-inverse .navbar-brand {
-    color: #2662c1;
+    color: #f4fc00;
 }
 .navbar-inverse .navbar-brand > a:hover{
     color: white;

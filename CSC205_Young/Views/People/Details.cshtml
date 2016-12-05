@@ -7,9 +7,9 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Person</h4>
+    <h4>@Model.firstname @Model.middlename @Model.lastname</h4>
     <hr />
-    @Model.firstname @Model.lastname @Model.cell
+    <h5>Cellphone #: @Model.cell</h5> <h5>Relationship: @Model.relationship</h5> <h5>Family ID#: @Model.familyId</h5>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
