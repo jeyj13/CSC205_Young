@@ -68,5 +68,9 @@ namespace CSC205_Young.Controllers
 
             return View();
         }
+        public ActionResult Nope()
+        {
+            return View();
+        }
     }
 }
