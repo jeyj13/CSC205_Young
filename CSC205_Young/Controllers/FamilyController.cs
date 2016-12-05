@@ -93,10 +93,10 @@ namespace CSC205_Young.Controllers
                     {
                         id = families.Count(),
                         familyname = collection["familyname"],
-                        address1 = collection["middlename"],
-                        city = collection["lastname"],
-                        state = collection["cell"],
-                        zip = collection["relationship"],
+                        address1 = collection["address1"],
+                        city = collection["city"],
+                        state = collection["state"],
+                        zip = collection["zip"],
                         homephone = collection["homephone"]
 
                     };
