@@ -12,6 +12,7 @@ namespace CSC205_Young.Controllers
     public class LoginController : Controller
     {
         public List<Login> accounts;
+        //private ILoginServices userService;
         public LoginController()
         {
             accounts = new List<Login>
@@ -34,32 +35,48 @@ namespace CSC205_Young.Controllers
         public ActionResult Login()
         {
            
-           FormsAuthentication.SetAuthCookie("TestUser", false);
-            return RedirectToAction("Index", "Home");
+           //FormsAuthentication.SetAuthCookie("TestUser", false);
+            //  return RedirectToAction("Index", "Home");
+            return View();
             
         }
 
         // POST: Login
         [HttpPost]
-        public ActionResult Login(string username)
+        public ActionResult Login(Login model)
         {
+           // bool isAuthenticated;
             try
             {
-               // accounts = (List<Login>)Session["accountList"];
+                accounts = (List<Login>)Session["accountList"];
                 
-                //var user = accounts.Where(x => x.username == collection["username"]).ToList();
-               // var p = accounts.Where(x => x.password == collection["password"]).ToList();
-                /*
-                if (user == null || p == null)
+               /* var user = accounts.Where(x => x.username == collection["username"]).ToList();
+                var p = accounts.Where(x => x.password == collection["password"]).ToList();*/
+                
+                bool userClear;
+
+
+                if (model.username == null || model.password == null)
                 {
                     this.ModelState.AddModelError("", "Missing user input");
-                    return View(collection);
+                    return View(model);
                 }
-                bool isAuthenticated = this.userService.Authenticate(model.Username, model.Password);
+                Login userAuth = accounts.Where(x => x.username == model.username && x.password == model.password).SingleOrDefault();
+
+                if(userAuth == null)
+                {
+                    userClear = false;
+                }
+                else
+                {
+                    userClear = true;
+                }
+
+                bool isAuthenticated = userClear; 
                 if (isAuthenticated)
                 {
-                    FormsAuthentication.SetAuthCookie(model.Username, true);
-                    this.userService.EnableAdmin(model.Username);
+                    FormsAuthentication.SetAuthCookie(model.username, true);
+                 //   this.userService.EnableAdmin(model.Username);
                     return RedirectToAction("Index", "Home");
                 }
                 else
@@ -67,9 +84,9 @@ namespace CSC205_Young.Controllers
                     this.ModelState.AddModelError("", "Invalid username or password");
                     return View(model);
                 }
-                */
-                FormsAuthentication.SetAuthCookie("user1", true);
-                return RedirectToAction("Index","Home");
+
+                //FormsAuthentication.SetAuthCookie("user1", true);
+                //return RedirectToAction("Index","Home");
             }
             catch
             {
