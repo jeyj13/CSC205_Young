@@ -201,12 +201,21 @@ namespace CSC205_Young.Controllers
                 try
                 {
                     var fList = (List<Family>)Session["familyList"];
+                    var pList = (List<Person>)Session["peopleList"];
+
+
+                    
+
+                    
 
 
                     var f = fList[id];
+                    var p = pList[id];
 
                     Session["familyList"] = fList.Where(x => x.id != id).ToList();
+                    Session["peopleList"] = pList.Where(x => x.familyId != id).ToList();
                     fList = (List<Family>)Session["familyList"];
+                    pList = (List<Person>)Session["peopleList"];
 
                     for (int x = id; x < fList.Count(); x++)
                     {
@@ -214,6 +223,13 @@ namespace CSC205_Young.Controllers
                         if (fList[x] != null)
                             fList[x].id = x;
                     }
+                    for(int x = 0; x <pList.Count(); x++)
+                    {
+                        if (pList[x] != null)
+                            pList[x].id = x;
+                    }
+                    Session["familyList"] = fList;
+                    Session["peopleList"] = pList;
                     return RedirectToAction("Index");
                 }
                 catch

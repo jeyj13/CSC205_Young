@@ -233,6 +233,7 @@ namespace CSC205_Young.Controllers
                         if (pList[x] != null)
                             pList[x].id = x;
                     }
+                    Session["peopleList"] = pList;
                     return RedirectToAction("Index");
                 }
                 catch
