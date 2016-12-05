@@ -101,5 +101,39 @@ namespace CSC205_Young.Controllers
             return RedirectToAction("Index", "Home");
 
         }
+
+        //GET: Register
+        public ActionResult Register()
+        {
+            return View();
+        }
+
+        //POST: Register
+        [HttpPost]
+        public ActionResult Register(FormCollection collection)
+        {
+            try
+            {
+                var aList = (List<Login>)Session["accountList"];
+
+                Login newLogin = new Login()
+                {
+                    email = collection["email"],
+                    username = collection["username"],
+                    password = collection["password"],
+                    name = collection["name"],
+                    admin = false
+                };
+
+                aList.Add(newLogin);
+                Session["accountList"] = aList;
+
+                return RedirectToAction("Login");
+            }
+            catch
+            {
+                return View(collection);
+            }
+        }
     }
 }
